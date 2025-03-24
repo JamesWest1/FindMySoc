@@ -33,6 +33,6 @@ export interface User {
 }
 
 export interface Db {
-    users: Users[],
-    societies: Societies[]
+    users: User[],
+    societies: Society[]
 }
