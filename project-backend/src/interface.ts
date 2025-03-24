@@ -22,9 +22,16 @@ export interface Event {
 
 // Definition of User Type
 export interface User {
+    authUserId: number;
     zId: number;
-    name: string;
+    email: string;
+    password: string;
     nameFirst: string;
     nameLast: string;
     subscribed: string[];
+}
+
+export interface Db {
+    users: User[];
+    societies: Society[];
 }
