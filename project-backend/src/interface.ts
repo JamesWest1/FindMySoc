@@ -31,3 +31,8 @@ export interface User {
     subscribed: string[];
     usedPasswords: string[];
 }
+
+export interface Db {
+    users: Users[],
+    societies: Societies[]
+}
