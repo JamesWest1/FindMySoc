@@ -23,6 +23,7 @@ export interface Event {
 // Definition of User Type
 export interface User {
     zId: number;
+    name: string;
     nameFirst: string;
     nameLast: string;
     subscribed: string[];
