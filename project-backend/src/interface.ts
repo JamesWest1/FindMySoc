@@ -1,5 +1,5 @@
 // Definition of Society Type
-export interface Society {
+interface Society {
     societyId: number;
     name: string;
     description: string;
@@ -10,18 +10,18 @@ export interface Society {
 }
 
 // Definition of Society Type
-export interface Event {
+interface Event {
     eventId: number;
     name: string;
     description: string;
     date: string;
-    venue?: string;
+    venue: string;
     reminderDate: string;
 }
 
 
 // Definition of User Type
-export interface User {
+interface User {
     authUserId: number;
     zId: number;
     email: string;
@@ -31,7 +31,4 @@ export interface User {
     subscribed: string[];
 }
 
-export interface Db {
-    users: User[];
-    societies: Society[];
-}
+export {Society, Event, User};

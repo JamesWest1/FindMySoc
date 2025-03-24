@@ -1,9 +1,14 @@
 {
   "type": "module",
   "main": "src/server.ts",
+  "scripts": {
+    "start": "node dist/server.js"
+  },
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "sqlite3": "^5.1.7"

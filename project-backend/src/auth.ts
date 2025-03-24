@@ -5,7 +5,7 @@ import {
 
 import { User, Society } from './interface';
 
-const authRegister = (zId: string, email: string, password: string, nameFirst: string, nameLast: string) => {
+const authRegister = (zId: number, email: string, password: string, nameFirst: string, nameLast: string) => {
     const data = getData();
 
     const authUserId = Math.floor(Math.random() * 1000000000); // generate 10-digit random authUserId
@@ -18,7 +18,6 @@ const authRegister = (zId: string, email: string, password: string, nameFirst: s
     nameFirst: nameFirst,
     nameLast: nameLast,
     subscribed: [],
-    usedPasswords: [],
   };
 
   data.users.push(newUser);
