@@ -1,0 +1,8 @@
+{
+  "type":"module",
+  "main":"src/server.ts",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "express": "^4.21.2"
+  }
+}
