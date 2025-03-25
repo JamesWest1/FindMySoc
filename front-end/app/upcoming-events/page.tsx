@@ -106,7 +106,7 @@ export default async function Events() {
 
   return (
     <div className="flex flex-col items-center p-4">
-      <h1 className="pb-1 text-4xl font-bold mt-6 mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+      <h1 className="pb-1 text-4xl font-bold mt-6 mb-10">
         Upcoming Events
       </h1>
       <section>

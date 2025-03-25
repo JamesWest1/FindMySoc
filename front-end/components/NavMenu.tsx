@@ -21,10 +21,15 @@ export default function NavMenu() {
     //     pathname.startsWith("/event"),
     // },x
       {
-        label: "Upcoming Events",
+        label: "My Upcoming Events",
         href: "/upcoming-events",
         isActive: pathname.startsWith("/upcoming-events"),
       },
+      // {
+      //   label: "About",
+      //   href: "/upcoming-events",
+      //   isActive: pathname.startsWith("/upcoming-events"),
+      // },
   ];
 
   const linkstyle = `group inline-flex h-9 w-max items-center justify-center 
@@ -37,15 +42,15 @@ export default function NavMenu() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-        {menuItems.map((item) => (
-          <NavigationMenuLink asChild>
+        {menuItems.map((item, num) => (
+          // <NavigationMenuLink asChild >
             <Link
               className={item.isActive ? linkstyle : linknormal}
               href={item.href}
             >
               {item.label}
             </Link>
-          </NavigationMenuLink>
+          // </NavigationMenuLink>
         ))}
       </NavigationMenuList>
     </NavigationMenu>
