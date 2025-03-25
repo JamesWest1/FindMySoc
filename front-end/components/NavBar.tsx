@@ -4,6 +4,7 @@ import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
+import Image from "next/image";
 
 
 export default function Navbar() {
@@ -11,7 +12,7 @@ export default function Navbar() {
     <nav className="flex w-full md:flex-row justify-between items-center px-4 md:px-6 bg-slate-100/10 dark:bg-slate-950/10 backdrop-blur-md shadow-sm">
       <section className="items-center w-full">
         <div className="h-24 w-28 md:ml-5 lg:ml-6">
-            FindMeEvents
+            <Image src="/feedmeevents.png" width={400} height={400}/>
         </div>
         {/* <Logo style="h-24 w-28 md:ml-5 lg:ml-6" href="/" /> */}
       </section>
