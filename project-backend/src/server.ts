@@ -1,9 +1,11 @@
 import express from 'express';
-import {createTable, createUser, getUser, attemptLogin, getAllSocieties, subscribe, futureEvents, pastEvents} from './databaseHelper.js';
-import { User } from './interface.js';
+import {createTable, createUser, getUser, attemptLogin, getAllSocieties, subscribe, futureEvents, pastEvents, createEvent, createSoc} from './databaseHelper.js';
+import { emailSchedulder } from './helper.js';
 createTable();
 const app = express();
 
+export let sendEmailBool: boolean = false;
+emailSchedulder('demo@gmail.com');
 app.get('/', function (req: express.Request, res: express.Response) {
     res.send('Hello World');
 })
@@ -53,7 +55,7 @@ app.get('/auth/login', async (req, res) => {
     }
 })
 app.delete('/auth/logout', async (req, res) => {
-    
+    //
 })
 
 app.get('/socities/all', async (req, res) => {
@@ -101,6 +103,10 @@ app.get('/events/past', async (req, res) => {
         res.status(400).send({error: e.message});
     }
     
+})
+app.put('/email/toggle', (req, res) => {
+    sendEmailBool = !sendEmailBool;
+    res.status(200).send({sendEmails: sendEmailBool});
 })
 app.listen(3000, () => {
     console.log("listening");
