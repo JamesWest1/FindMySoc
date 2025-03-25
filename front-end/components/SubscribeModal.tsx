@@ -11,6 +11,7 @@ import {
 import { Label } from "@/components/ui/label"
 import { Switch } from "./ui/switch"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Checkbox } from "./ui/checkbox"
  
 export function SubscribeModal() {
   return (
@@ -22,28 +23,32 @@ export function SubscribeModal() {
         <DialogHeader>
           <DialogTitle>Subscribe</DialogTitle>
           <DialogDescription>
-            Subscribe to the latest events of this society via Discord, SMS and Email. 
+            Subscribe to the latest events of this society via Discord, SMS and Email. Will automati
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
+          <DialogTitle>Notify Me on</DialogTitle>
+          <div className="flex items-center gap-4">
             <Label htmlFor="discord" className="text-right">
               Discord
             </Label>
+            <Checkbox />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="facebook" className="text-right">
-              Facebook
-            </Label>
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email" className="text-right">
+          <div className="flex items-center gap-4">
+            <Label htmlFor="discord" className="text-right">
               Email
             </Label>
+            <Checkbox />
+          </div>
+          <div className="flex items-center gap-4">
+            <Label htmlFor="discord" className="text-right">
+              Facebook
+            </Label>
+            <Checkbox />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit">Subscribe</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

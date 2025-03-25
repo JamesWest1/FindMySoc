@@ -151,7 +151,7 @@ export default function Home() {
             Stay tuned for new events!
           </div>
         ) : (
-          <div className="w-full max-w-7xl grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          <div className="w-full max-w-7xl grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
             {societies.map((societies) => (
               <SocietyCard key={societies.id} societies={societies} />
             ))}
