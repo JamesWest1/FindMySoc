@@ -34,7 +34,7 @@ export default function EventCard({ event }: { event: Event }) {
 
             <CardContent className="p-4">
             <p className="text-sm text-muted-foreground">{event?.category}</p>
-            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-green-500 to-cyan-500">
                 {event?.eventTitle}
             </h3>
             <p className="text-base font-bold">{event?.location}</p>

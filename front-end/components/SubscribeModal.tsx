@@ -6,6 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogClose,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
@@ -23,7 +24,7 @@ export function SubscribeModal() {
         <DialogHeader>
           <DialogTitle>Subscribe</DialogTitle>
           <DialogDescription>
-            Subscribe to the latest events of this society via Discord, SMS and Email. Will automati
+            Subscribe to the latest events of this society via Discord, SMS and Email.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -46,9 +47,17 @@ export function SubscribeModal() {
             </Label>
             <Checkbox />
           </div>
+          <div className="flex items-center gap-4">
+            <Label htmlFor="discord" className="text-right">
+              SMS/Text
+            </Label>
+            <Checkbox />
+          </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Subscribe</Button>
+          <DialogClose asChild>
+            <Button type="submit">Subscribe</Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

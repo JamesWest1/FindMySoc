@@ -12,43 +12,39 @@ import { SubscribeModal } from "./SubscribeModal";
 import { Facebook, Instagram, Rss } from "lucide-react";
 
 
-// export default function EventCard({ event }: { event: Event }) {
-//     return (
-//         <Link href={`/event/${event.slug}`}>
-//         <Card className="h-full rounded-lg bg-gradient-to-r from-purple-400/25 via-pink-500/25 to-red-500/25 shadow-xl dark:shadow-slate-900 transition duration-300 md:hover:scale-105 lg:hover:scale-105">
-//             <CardContent className="p-4">
-//             <p className="text-sm text-muted-foreground">{event?.category}</p>
-//             <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-//                 {event?.eventTitle}
-//             </h3>
-//             <p className="text-base font-bold">{event?.location}</p>
-//             <p className="text-base">{event?.dateTime}</p>
-//             <p className="text-sm text-muted-foreground">{event?.description}</p>
-//             </CardContent>
-//         </Card>
-//         </Link>
-// );
 export default function SocietyCard({ societies } ) {
     return (
-        // <Link href={`/event/${event.slug}`}>
-        <Card className="h-full rounded-lg shadow-xl transition duration-300 md:hover:scale-105 lg:hover:scale-105 ">
-            <CardContent className="p-4 space-y-2">
-                <img src={societies.societyImage.url} alt="Girl in a jacket" width="500" height="600"/>
-                <p className="text-sm text-muted-foreground">{societies.category}</p>
-                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-green-500 to-cyan-500">
+    <Card className="h-full rounded-lg shadow-xl transition duration-300 md:hover:scale-105 lg:hover:scale-105">
+        <CardContent className="p-4 flex flex-col h-full space-y-4">
+            <img 
+                className="rounded-full" 
+                src={societies.societyImage.url} 
+                alt={societies.societyName} 
+                width="500" 
+                height="600"
+            />
+            <p className="text-sm text-muted-foreground">{societies.category}</p>
+            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-green-500 to-cyan-500">
                 {societies.societyName}
-                </h3>
-                <p className="text-sm text-muted-foreground">{societies.description} </p>
+            </h3>
+
+            {/* Description container - pushes the social section to the bottom */}
+            <p className="text-sm text-muted-foreground flex-grow">
+                {societies.description}
+            </p>
+
+            {/* Stick social media & button to the bottom */}
+            <div className="mt-auto flex items-center justify-between">
                 <div className="flex space-x-3">
                     <Link href="facebook">
                         <Facebook />
                     </Link>
-                    <Instagram/>
+                    <Instagram />
                     <Rss />
                 </div>
                 <SubscribeModal />
-            </CardContent>
-        </Card>
-        // </Link>
+            </div>
+        </CardContent>
+</Card>
 );
 }
