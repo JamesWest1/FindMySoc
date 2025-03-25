@@ -1,7 +1,5 @@
 import path from "path";
 import sqlite3 from "sqlite3";
-import {v4 as uuidv4} from 'uuid';
-import { User } from "./interface";
 
 
 
@@ -49,7 +47,8 @@ const createTable = () => {
                 userId INTEGER,
                 eventId INTEGER,
                 FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-                FOREIGN KEY (eventId) REFERENCES events(id) ON DELETE CASCADE
+                FOREIGN KEY (eventId) REFERENCES events(id) ON DELETE CASCADE,
+                UNIQUE (userId, eventId)
             )`)
     })
 }
@@ -69,10 +68,10 @@ const createUser = (email:string, nameFirst: string, nameLast:string, zid:number
     })
 }
 
-const getUser = (userId:number) => {
+const getUser = (userId:number): Promise<any> => {
     return new Promise((resolve, reject) => {
         const sql: string = `SELECT * from users WHERE id = ?`;
-        db.get(sql, [userId], (row, err) => {
+        db.get(sql, [userId], (_, err, row) => {
             if (err) {
                 reject(err);
             }
@@ -83,10 +82,10 @@ const getUser = (userId:number) => {
     });
 }
 
-const attemptLogin = (email:string, password: string) => {
+const attemptLogin = (email:string, password: string): Promise<any> => {
     return new Promise((resolve, reject) => {
         const sql: string = `SELECT * from users WHERE email = ? AND password = ?`;
-        db.get(sql, [email, password], (row, err) => {
+        db.get(sql, [email, password], (_, err, row) => {
             if (err) {
                 reject(err);
             }
@@ -96,7 +95,7 @@ const attemptLogin = (email:string, password: string) => {
         })
     })
 }
-const createSoc = (name:string, description: string, arc: string, facebook: string, website: string) => {
+const createSoc = (name:string, description: string, arc: string, facebook: string, website: string): Promise<any> => {
     return new Promise((resolve, reject) => {
         const id = Math.floor(Math.random() * 1000000000);
         const sql: string = `INSERT INTO societies (name, description, arc, facebook, website, id) VALUES (?, ?, ?, ?, ?, ?)`;
@@ -110,10 +109,10 @@ const createSoc = (name:string, description: string, arc: string, facebook: stri
     })
 }
 
-const getSoc = (id:number) => {
+const getSoc = (id:number): Promise<any> => {
     return new Promise((resolve, reject) => {
         const sql: string = `SELECT * from societies WHERE id = ?`;
-        db.get(sql, [id], (row, err) => {
+        db.get(sql, [id], (_, err, row) => {
             if (err) {
                 reject(err);
             }
@@ -124,7 +123,7 @@ const getSoc = (id:number) => {
     });
 }
 
-const createEvent = (name: string, description: string, date: string, society: number) => {
+const createEvent = (name: string, description: string, date: string, society: number): Promise<any> => {
     return new Promise((resolve, reject) => {
         const unixTime: number = Date.parse(date);
         const sql: string = `INSERT INTO events (name, description, date, societyId) VALUES (?, ?, ?, ?)`;
@@ -139,4 +138,68 @@ const createEvent = (name: string, description: string, date: string, society: n
     })
 }
 
-export {db, createTable, createUser, createSoc, getUser, attemptLogin, getSoc, createEvent};
+const getAllSocieties = (): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        const sql: string = `SELECT * from societies`;
+        db.get(sql, [], (_, err, row) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(row);
+            }
+        })
+    })
+}
+
+const subscribe = (userId: number, societyId: number): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        const sql: string = `INSERT INTO subscriptions (userId, societyId) VALUES (?, ?)`;
+        db.run(sql, [userId, societyId], (row, err) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(row);
+            }
+        });
+    })
+}
+const futureEvents = (userId: number): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        const timeNow: number = Date.now();
+        const sql: string = `
+            SELECT * FROM events e
+            JOIN subscibed sub ON sub.userId = ?
+            JOIN societies s ON s.id = sub.eventId
+            WHERE e.societyId = s.id AND e.date > ?
+        `;
+        db.get(sql, [userId, timeNow], (row, err) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(row);
+            }
+        })
+    })
+}
+const pastEvents = (userId: number): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        const sql: string = `
+            SELECT * FROM events e
+            JOIN subscibed sub ON sub.userId = ?
+            JOIN societies s ON s.id = sub.eventId
+            WHERE e.societyId = s.id AND e.date <= ?
+        `;
+        db.get(sql, [], (row, err) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(row);
+            }
+        })
+    })
+}
+export {db, createTable, createUser, createSoc, getUser, attemptLogin, getSoc, createEvent, getAllSocieties, subscribe, futureEvents, pastEvents};
