@@ -11,12 +11,12 @@ import Link from "next/link";
 
 
 
-export default function EventCard({ event }: { event: Event }) {
+export default function EventCard({ event }) {
     return (
         // <Link href={`/event/${event.slug}`}>
-        <Card className="h-full rounded-lg shadow-xl dark:shadow-slate-900 transition duration-300 md:hover:scale-105 lg:hover:scale-105">
-            <image
-            className="w-full rounded-t-lg"
+        <Card className="py-0 h-full rounded-lg shadow-xl dark:shadow-slate-900 transition duration-300 md:hover:scale-105 lg:hover:scale-105">
+            <Image
+            className="h-full w-full rounded-t-lg"
             src={
                 event.eventImage?.url
                 ? event.eventImage.url
@@ -31,7 +31,6 @@ export default function EventCard({ event }: { event: Event }) {
             }}
             alt={event?.eventImage.title || "Placeholder Image"}
             />
-
             <CardContent className="p-4">
             <p className="text-sm text-muted-foreground">{event?.category}</p>
             <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-green-500 to-cyan-500">

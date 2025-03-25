@@ -10,7 +10,7 @@ async function getEvents() {
         slug: "hackabyte-hackathon",
         eventTitle: "DevSoc Presents: HACKaByte Hackathon",
         eventImage: {
-          url: "https://example.com/event-image.jpg",
+          url: "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/003/328/621/datas/original.png",
           title: "HACKaByte Hackathon Banner",
         },
         category: "Technology",
@@ -24,7 +24,7 @@ async function getEvents() {
         slug: "careers-fair",
         eventTitle: "DevSoc x DataSoc x MathSoc presents: Careers Fair",
         eventImage: {
-          url: "https://example.com/tech-event.jpg",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTztv6HkVrNO7umPdFa38gVagN4S8I2hbapGw&s",
           title: "Careers Fair Banner",
         },
         category: "Networking",
@@ -38,7 +38,7 @@ async function getEvents() {
         slug: "cate-cafe-visit",
         eventTitle: "UNSW Catsoc x UNSW Tacsoc Yumiao Cat Cafe Visit!",
         eventImage: {
-          url: "https://example.com/art-exhibition.jpg",
+          url: "https://arc-discovery-s3.linkupevents.com/event/a0xMn00000GNNqjIAH",
           title: "Cat Cafe Visit Banner",
         },
         category: "Social Event",
@@ -48,25 +48,11 @@ async function getEvents() {
         description: "UNSW Catsoc x UNSW Tacsoc Yumi",
       },
       {
-        sys: { id: "4" },
-        slug: "debsoc-internals5",
-        eventTitle: "UNSW DebSoc Internals 5",
-        eventImage: {
-          url: "https://example.com/sports-tournament.jpg",
-          title: "Debsoc Internals Banner",
-        },
-        category: "Class/Training/Workshop",
-        location: "Patricia O'Shane G06",
-        startingTime: "2024-03-31T18:00:00Z",
-        endingTime: "2024-03-31T21:00:00Z",
-        description: "Weekly Debating Training",
-      },
-      {
         sys: { id: "5" },
         slug: "careers-night",
         eventTitle: "GEOSoc Careers Night",
         eventImage: {
-          url: "https://example.com/sports-tournament.jpg",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxDJdcr2gttC3K6EFcS48qnFXCuZy28biu5w&s",
           title: "Careers Night Banner",
         },
         category: "Networking",

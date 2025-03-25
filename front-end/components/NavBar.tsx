@@ -26,7 +26,7 @@ export default function Navbar() {
                     Login
                 </Button>
             </Link> */}
-            <img className="rounded-full" src="https://github.com/shadcn.png" alt="Girl in a jacket" width="45" height="45"></img>
+            <img className="rounded-full aspect-square" src="https://i.pinimg.com/originals/96/fb/d4/96fbd4aed6e79584a1bdc73e5c915b32.jpg" alt="Girl in a jacket" width="45" height="45"></img>
             <Label>James Henry</Label>
           <div className="md:hidden lg:hidden">
             {/* <MobileMenu /> */}
